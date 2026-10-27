@@ -8,6 +8,10 @@ export default function ShopPage({
 }) {
   return (
     <section className="section shop-page">
+      <Link to="/" className="back-home">
+  <span aria-hidden="true">←</span>
+  Back to Home
+</Link>
       <div className="shop-page__header">
         <div>
           <p className="shop-page__eyebrow">
@@ -78,6 +82,8 @@ export default function ShopPage({
                 ))}
               </div>
             </Link>
+          
+          
           );
         })}
       </div>
