@@ -23,7 +23,7 @@ export default function Membership() {
               <input required type={f.type} value={form[f.key]} onChange={onChange(f.key)} />
             </label>
           ))}
-          <button className="btn btn--orange" type="submit">Join the pack</button>
+          <button className="btn btn--orange" type="submit">Join the Frenzy</button>
         </form>
       )}
     </section>
