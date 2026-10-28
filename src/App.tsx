@@ -13,6 +13,8 @@ import ShopPage from "./components/ShopPage";
 import ProductPage from "./components/ProductPage";
 import Marquee from "./components/Marquee";
 import PastDrops from "./components/PastDrops";
+import PastDropsPage from "./components/PastDropspage";
+import PastDropDetailPage from "./components/PastDropDetailPage";
 import Membership from "./components/Membership";
 import Footer from "./components/Footer";
 
@@ -71,15 +73,49 @@ function ProductRoute() {
   );
 }
 
+function PastDropsRoute() {
+  return (
+    <>
+      <Navbar />
+
+      <PastDropsPage items={pastDrops} />
+
+      <Footer />
+    </>
+  );
+}
+
+function PastDropDetailRoute() {
+  return (
+    <>
+      <Navbar />
+
+      <PastDropDetailPage items={pastDrops} />
+
+      <Footer />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+
         <Route path="/shop" element={<ShopRoute />} />
         <Route
           path="/shop/:slug"
           element={<ProductRoute />}
+        />
+
+        <Route
+          path="/past-drops"
+          element={<PastDropsRoute />}
+        />
+        <Route
+          path="/past-drops/:id"
+          element={<PastDropDetailRoute />}
         />
       </Routes>
     </BrowserRouter>

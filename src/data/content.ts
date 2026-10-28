@@ -8,10 +8,34 @@ export const upcomingDrops: Drop[] = [
   { id: "d4", city: "London, UK", date: "December 19, 2026" },
 ];
 export const pastDrops: PastDrop[] = [
-  { id: "p1", name: "Deep End Pop-up", city: "Lagos, Nigeria", date: "September 26, 2026" },
-  { id: "p2", name: "Tidal Warehouse", city: "Los Angeles, CA", date: "August 12, 2026" },
-  { id: "p3", name: "Reef Runway", city: "Miami, FL", date: "August 4, 2026" },
-  { id: "p4", name: "Fin Season", city: "Accra, Ghana", date: "June 24, 2026" },
+  {
+    id: "p1",
+    name: "Deep End Pop-up",
+    city: "Lagos, Nigeria",
+    date: "September 26, 2026",
+    image: "/deependpopup.jpg",
+  },
+  {
+    id: "p2",
+    name: "Tidal Warehouse",
+    city: "Los Angeles, CA",
+    date: "August 12, 2026",
+    image: "/tidalwarehouse.jpg",
+  },
+  {
+    id: "p3",
+    name: "Reef Runway",
+    city: "Miami, FL",
+    date: "August 4, 2026",
+    image: "/reefrunway.jpg",
+  },
+  {
+    id: "p4",
+    name: "Fin Season",
+    city: "Accra, Ghana",
+    date: "June 24, 2026",
+    image: "/finseason.jpg",
+  },
 ];
 
 export const products: Product[] = [
