@@ -899,7 +899,7 @@ h3 {
 .past-drops-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px 20px;
+  gap: 36px 24px;
   align-items: start;
   width: 100%;
 }
@@ -907,18 +907,22 @@ h3 {
 .past-drop-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-width: 0;
   width: 100%;
   color: inherit;
   text-decoration: none;
+  text-align: center;
 }
 
 .past-drop-card__image {
   position: relative;
   display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
+  width: clamp(120px, 15vw, 190px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
   overflow: hidden;
+  border-radius: 50%;
   background: #e9e5dc;
   isolation: isolate;
 }
@@ -932,33 +936,32 @@ h3 {
   max-width: none;
   object-fit: cover;
   object-position: center;
+  border-radius: 50%;
   transition: transform 350ms ease;
-}
-
-.past-drop-card img {
-  flex-shrink: 0;
 }
 
 .past-drop-card__info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding-top: 14px;
+  align-items: center;
+  gap: 7px;
+  padding-top: 16px;
+  width: 100%;
 }
 
 .past-drop-card__info h3 {
   margin: 0;
   font-family: var(--display);
-  font-size: 1.25rem;
-  line-height: 1.1;
+  font-size: 1.1rem;
+  line-height: 1.15;
   font-weight: 400;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .past-drop-card__info p {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   line-height: 1.5;
 }
 
@@ -967,26 +970,24 @@ h3 {
 }
 
 .past-drop-card:hover .past-drop-card__image img {
-  transform: scale(1.04);
+  transform: scale(1.08);
 }
 
 .past-drop-card__arrow {
   position: absolute;
   z-index: 1;
-  right: 12px;
-  bottom: 12px;
+  right: 5px;
+  bottom: 5px;
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--cream);
   color: #171717;
   opacity: 0;
   transform: translateY(5px);
-  transition:
-    opacity 250ms ease,
-    transform 250ms ease;
+  transition: opacity 250ms ease, transform 250ms ease;
 }
 
 .past-drop-card:hover .past-drop-card__arrow,
@@ -1005,7 +1006,7 @@ h3 {
 }
 
 .past-drops-page__header {
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .past-drops-page__eyebrow {
@@ -1026,17 +1027,6 @@ h3 {
   margin-top: 16px;
 }
 
-.past-drop-detail {
-  min-height: 80vh;
-}
-
-.past-drop-detail__layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-  gap: clamp(28px, 6vw, 80px);
-  align-items: start;
-}
-
 .past-drop-detail__image {
   position: relative;
   width: 100%;
@@ -1053,33 +1043,82 @@ h3 {
   object-position: center;
 }
 
-.past-drop-detail__info {
-  padding-top: 12px;
+@media (max-width: 1024px) {
+  .past-drops-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px 18px;
+  }
+
+  .past-drop-card__image {
+    width: clamp(120px, 19vw, 170px);
+  }
+
+  .past-drop-card__arrow {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.past-drop-detail__eyebrow {
-  margin-bottom: 16px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+@media (max-width: 760px) {
+  .past-drops-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 12px;
+  }
+
+  .past-drop-card__image {
+    width: clamp(120px, 30vw, 165px);
+  }
+
+  .past-drop-detail__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .past-drop-detail__info {
+    padding-top: 0;
+  }
 }
 
-.past-drop-detail__info h1 {
-  margin: 0;
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 0.95;
+@media (max-width: 560px) {
+  .past-drops-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 8px;
+  }
+
+  .past-drop-card__image {
+    width: clamp(110px, 32vw, 145px);
+  }
+
+  .past-drop-card__info {
+    gap: 5px;
+    padding-top: 12px;
+  }
+
+  .past-drop-card__info h3 {
+    font-size: 0.95rem;
+  }
+
+  .past-drop-card__info p {
+    font-size: 0.75rem;
+  }
+
+  .past-drop-card__arrow {
+    right: 3px;
+    bottom: 3px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .past-drops-page__header {
+    margin-bottom: 32px;
+  }
 }
 
-.past-drop-detail__info p {
-  margin-top: 16px;
-}
-
-.past-drop-detail__date {
-  opacity: 0.65;
-}
-
-.past-drop-not-found {
-  min-height: 60vh;
+@media (prefers-reduced-motion: reduce) {
+  .past-drop-card__image img,
+  .past-drop-card__arrow {
+    transition: none;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1185,42 +1224,8 @@ h3 {
   .join form {
     grid-template-columns: 1fr;
   }
-
-  .past-drops-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px 12px;
-  }
-
-  .past-drop-card__image {
-    aspect-ratio: 3 / 4;
-  }
-
-  .past-drop-card__info {
-    gap: 5px;
-    padding-top: 10px;
-  }
-
-  .past-drop-card__info h3 {
-    font-size: 1rem;
-    line-height: 1.15;
-  }
-
-  .past-drop-card__info p {
-    font-size: 0.78rem;
-  }
-
-  .past-drop-card__arrow {
-    right: 8px;
-    bottom: 8px;
-    width: 30px;
-    height: 30px;
-    font-size: 0.85rem;
-  }
-
-  .past-drops-page__header {
-    margin-bottom: 28px;
-  }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .hero__headline,
@@ -1238,3 +1243,50 @@ h3 {
     scroll-behavior: auto;
   }
 }
+
+
+.past-drop-detail__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px clamp(24px, 5vw, 72px) 64px;
+}
+
+.past-drop-detail__image {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(23, 23, 23, 0.12);
+  border-radius: 2px;
+  background: #e9e5dc;
+}
+
+.past-drop-detail__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.past-drop-detail__info {
+  min-width: 0;
+}
+
+@media (max-width: 760px) {
+  .past-drop-detail__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+    padding: 16px 0 40px;
+  }
+
+  .past-drop-detail__image {
+    max-width: 100%;
+  }
+}
+
