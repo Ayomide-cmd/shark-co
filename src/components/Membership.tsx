@@ -14,7 +14,7 @@ export default function Membership() {
   const onSubmit = (e: FormEvent) => { e.preventDefault(); /* TODO: POST form to your API or mailing list */ setDone(true); setForm(empty); };
   return (
     <section id="join" className="section section--blue join">
-      <h2>Join the pack</h2>
+      <h2>Join the Frenzy</h2>
       <p>Get early access to drops, secret restocks, member-only pieces and the makers everyone is about to know.</p>
       {done ? <p className="join__ok" role="status">You're in. Check your inbox for your first drop.</p> : (
         <form onSubmit={onSubmit}>

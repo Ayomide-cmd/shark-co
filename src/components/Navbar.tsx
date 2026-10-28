@@ -71,7 +71,7 @@ export default function Navbar() {
           handleSectionLink("join");
         }}
       >
-        Join the pack
+        Join the Frenzy
       </a>
 
       <button
