@@ -1,3 +1,4 @@
+
 import {
   BrowserRouter,
   Routes,
@@ -29,7 +30,6 @@ function HomePage() {
   return (
     <>
       <Navbar />
-
       <main>
         <Hero />
         <Drops items={upcomingDrops} />
@@ -39,7 +39,6 @@ function HomePage() {
         <PastDrops items={pastDrops} />
         <Membership />
       </main>
-
       <Footer />
     </>
   );
@@ -49,11 +48,9 @@ function ShopRoute() {
   return (
     <>
       <Navbar />
-
       <main>
         <ShopPage items={products} />
       </main>
-
       <Footer />
     </>
   );
@@ -63,11 +60,9 @@ function ProductRoute() {
   return (
     <>
       <Navbar />
-
       <main>
         <ProductPage items={products} />
       </main>
-
       <Footer />
     </>
   );
@@ -77,9 +72,7 @@ function PastDropsRoute() {
   return (
     <>
       <Navbar />
-
       <PastDropsPage items={pastDrops} />
-
       <Footer />
     </>
   );
@@ -89,9 +82,7 @@ function PastDropDetailRoute() {
   return (
     <>
       <Navbar />
-
       <PastDropDetailPage items={pastDrops} />
-
       <Footer />
     </>
   );
@@ -102,21 +93,10 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
-
         <Route path="/shop" element={<ShopRoute />} />
-        <Route
-          path="/shop/:slug"
-          element={<ProductRoute />}
-        />
-
-        <Route
-          path="/past-drops"
-          element={<PastDropsRoute />}
-        />
-        <Route
-          path="/past-drops/:id"
-          element={<PastDropDetailRoute />}
-        />
+        <Route path="/shop/:slug" element={<ProductRoute />} />
+        <Route path="/past-drops" element={<PastDropsRoute />} />
+        <Route path="/past-drops/:id" element={<PastDropDetailRoute />} />
       </Routes>
     </BrowserRouter>
   );

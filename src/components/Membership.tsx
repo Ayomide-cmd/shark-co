@@ -11,7 +11,7 @@ export default function Membership() {
   const [form, setForm] = useState<MemberForm>(empty);
   const [done, setDone] = useState(false);
   const onChange = (k: keyof MemberForm) => (e: ChangeEvent<HTMLInputElement>) => setForm({ ...form, [k]: e.target.value });
-  const onSubmit = (e: FormEvent) => { e.preventDefault(); /* TODO: POST form to your API or mailing list */ setDone(true); setForm(empty); };
+  const onSubmit = (e: FormEvent) => { e.preventDefault();  setDone(true); setForm(empty); };
   return (
     <section id="join" className="section section--blue join">
       <h2>Join the Frenzy</h2>
