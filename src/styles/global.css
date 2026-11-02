@@ -1290,3 +1290,142 @@ h3 {
   }
 }
 
+
+.drops {
+  overflow: hidden;
+}
+
+.drops__subtitle {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+.drops__carousel {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.drops__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.drops__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding-right: 5%;
+}
+
+.drops__slide {
+  flex: 0 0 min(75vw, 420px);
+  scroll-snap-align: start;
+}
+
+.drops__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 512 / 525;
+  overflow: hidden;
+  background: #d9d1ca;
+}
+
+.drops__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.drops__slide:hover .drops__image {
+  transform: scale(1.04);
+}
+
+.drops__number {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: white;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 8px 12px;
+}
+
+.drops__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 18px;
+}
+
+.drops__info h3 {
+  margin: 0;
+}
+
+.drops__info p {
+  margin-top: 5px;
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+.drops__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.drops__progress {
+  display: flex;
+  gap: 7px;
+}
+
+.drops__dot {
+  width: 20px;
+  height: 3px;
+  background: #b9b4ae;
+}
+
+.drops__dot:first-child {
+  background: #0b369a;
+}
+
+@media (min-width: 768px) {
+  .drops__slide {
+    flex-basis: 38vw;
+    max-width: 480px;
+  }
+
+  .drops__track {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .drops__slide {
+    flex-basis: 82vw;
+  }
+
+  .drops__track {
+    gap: 14px;
+  }
+
+  .drops__info {
+    align-items: flex-start;
+  }
+
+  .drops__info .btn {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+}
