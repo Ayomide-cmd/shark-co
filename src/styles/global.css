@@ -1291,141 +1291,228 @@ h3 {
 }
 
 
+/* ========================================
+   UPCOMING DROPS
+======================================== */
+
 .drops {
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+.drops__stage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 0 12px;
   overflow: hidden;
 }
 
-.drops__subtitle {
-  margin-top: 8px;
-  font-size: 13px;
-  opacity: 0.65;
-}
-
-.drops__carousel {
+.drops__deck {
+  position: relative;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  max-width: 780px;
+  height: 480px;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.drops__carousel::-webkit-scrollbar {
-  display: none;
+.drops__card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: min(100%, 590px);
+  height: 100%;
+  padding: 12px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+  overflow: hidden;
+  cursor: grab;
+  transform-origin: center 85%;
+  transition:
+    transform 0.45s cubic-bezier(.2, .8, .2, 1),
+    opacity 0.4s ease;
 }
 
-.drops__track {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  padding-right: 5%;
+.drops__deck.is-dragging .drops__card {
+  transition: none;
 }
 
-.drops__slide {
-  flex: 0 0 min(75vw, 420px);
-  scroll-snap-align: start;
+.drops__card.is-active {
+  cursor: grabbing;
 }
 
 .drops__image-wrap {
-  position: relative;
   width: 100%;
-  aspect-ratio: 512 / 525;
+  height: calc(100% - 72px);
   overflow: hidden;
-  background: #d9d1ca;
+  background: #e8e4df;
 }
 
-.drops__image {
+.drops__image-wrap img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
+  pointer-events: none;
+  -webkit-user-drag: none;
 }
 
-.drops__slide:hover .drops__image {
-  transform: scale(1.04);
-}
-
-.drops__number {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: white;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 8px 12px;
-}
-
-.drops__info {
+.drops__card-info {
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-top: 18px;
+  padding: 8px 5px 0;
+  color: #0b369a;
 }
 
-.drops__info h3 {
-  margin: 0;
+.drops__card-info > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.drops__info p {
-  margin-top: 5px;
-  font-size: 13px;
+.drops__number {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
   opacity: 0.65;
 }
 
+.drops__card-info h3 {
+  margin: 0;
+  font-family: "Anton", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.drops__card-info p {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* Pagination and arrows */
+
 .drops__footer {
+  max-width: 590px;
+  margin: 22px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 32px;
-  font-size: 10px;
-  letter-spacing: 2px;
+  padding: 0 5px;
 }
 
-.drops__progress {
+.drops__pagination {
   display: flex;
-  gap: 7px;
+  align-items: center;
+  gap: 8px;
 }
 
 .drops__dot {
-  width: 20px;
-  height: 3px;
-  background: #b9b4ae;
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #b9b5af;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.drops__dot:first-child {
+.drops__dot.is-active {
+  width: 23px;
+  border-radius: 20px;
+  background: #c34811;
+}
+
+.drops__controls {
+  display: flex;
+  gap: 9px;
+}
+
+.drops__controls button {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #0b369a;
+  border-radius: 50%;
+  background: transparent;
+  color: #0b369a;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.drops__controls button:hover {
   background: #0b369a;
+  color: #fff;
 }
 
-@media (min-width: 768px) {
-  .drops__slide {
-    flex-basis: 38vw;
-    max-width: 480px;
+
+@media (max-width: 700px) {
+  .drops {
+    padding-bottom: 55px;
   }
 
-  .drops__track {
-    gap: 24px;
+  .drops__stage {
+    padding: 20px 0 8px;
+  }
+
+  .drops__deck {
+    height: 390px;
+    max-width: 100%;
+  }
+
+  .drops__card {
+    width: min(78%, 360px);
+    padding: 9px;
+  }
+
+  .drops__image-wrap {
+    height: calc(100% - 62px);
+  }
+
+  .drops__card-info {
+    height: 62px;
+    padding-top: 6px;
+  }
+
+  .drops__card-info h3 {
+    font-size: 20px;
+  }
+
+  .drops__card-info p {
+    font-size: 10px;
+  }
+
+  .drops__footer {
+    max-width: 78%;
+    margin-top: 17px;
+  }
+
+  .drops__controls button {
+    width: 34px;
+    height: 34px;
   }
 }
 
-@media (max-width: 600px) {
-  .drops__slide {
-    flex-basis: 82vw;
+@media (max-width: 380px) {
+  .drops__deck {
+    height: 340px;
   }
 
-  .drops__track {
-    gap: 14px;
+  .drops__card {
+    width: 80%;
   }
 
-  .drops__info {
-    align-items: flex-start;
-  }
-
-  .drops__info .btn {
-    font-size: 11px;
-    white-space: nowrap;
+  .drops__card-info h3 {
+    font-size: 18px;
   }
 }
