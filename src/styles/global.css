@@ -304,17 +304,31 @@ h3 {
   background: linear-gradient(135deg, var(--orange), var(--cream));
   color: var(--blue);
 }
-
 .about {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 56px;
   align-items: center;
 }
 
-.about h2 {
-  margin: 12px 0 24px;
+.about > div:first-child {
+  min-width: 0;
 }
+
+.about__video {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 800 / 560;
+  overflow: hidden;
+}
+
+.about__video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 
 .about p:not(.kicker) {
   max-width: 52ch;
