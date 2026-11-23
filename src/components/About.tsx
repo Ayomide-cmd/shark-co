@@ -41,20 +41,14 @@ export default function About() {
       <div className="about__video">
         <video
           ref={videoRef}
-          poster="/about-poster.jpg"
+          src={shouldLoad ? "/about.mp4" : undefined}
+          poster="/about-poster.png"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-        >
-          {shouldLoad && (
-            <>
-              <source src="/about.webm" type="video/webm" />
-              <source src="/about.mp4" type="video/mp4" />
-            </>
-          )}
-        </video>
+        />
       </div>
     </section>
   );
