@@ -169,6 +169,7 @@ h3 {
   justify-content: center;
   gap: 28px;
   padding: var(--pad);
+  background-color: #0a1f4d;
   background-image:
     linear-gradient(
       rgba(0, 0, 0, 0.45),
