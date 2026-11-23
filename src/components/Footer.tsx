@@ -1,6 +1,6 @@
 const cols: Record<string, string[]> = {
-  Explore: ["Drops", "Lookbook", "Collections", "Stores", "Community", "About", "Journal"],
-  Support: ["Join the pack", "Shipping", "Returns", "Contact us"],
+  Explore: ["Drops", "Lookbook", "Collections", "Stores", "Community", "About"],
+  Support: ["Join the frenzy", "Shipping", "Returns", "Contact us"],
   Connect: ["Instagram", "TikTok", "X", "YouTube"],
 };
 export default function Footer() {
