@@ -1,4 +1,27 @@
+import { useEffect, useRef, useState } from "react";
+
 export default function About() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="lookbook" className="section section--blue about">
       <div>
@@ -17,12 +40,21 @@ export default function About() {
 
       <div className="about__video">
         <video
-          src="/about.mov"
+          ref={videoRef}
+          poster="/about-poster.jpg"
           autoPlay
           muted
           loop
           playsInline
-        />
+          preload="metadata"
+        >
+          {shouldLoad && (
+            <>
+              <source src="/about.webm" type="video/webm" />
+              <source src="/about.mp4" type="video/mp4" />
+            </>
+          )}
+        </video>
       </div>
     </section>
   );
